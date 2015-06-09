@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<html>
+<head>
+    <title></title>
+</head>
+
+<body>
+    <form action="" method="post">
+        Facebook Username: <input name="username"><br>
+        <input type="submit" value="get information on this person.">
+    </form><?php if ($_POST) {   $username = $_POST['username'];   $fb_parsed_response = json_decode(file_get_contents("https://graph.facebook.com/" . $username));    $firstname = $fb_parsed_response->first_name;   $lastname = $fb_parsed_response->last_name;    print 'First Name: ' . $firstname . '<br>';   print 'Last Name: ' . $lastname; } ?>
+</body>
+</html>
